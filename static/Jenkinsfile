@@ -59,9 +59,8 @@ pipeline {
                 dir("./static/build") {
                     withCredentials([file(credentialsId: 'service-account-cred', variable: 'FILE')]) {
                         sh 'gcloud auth activate-service-account --key-file $FILE'
-                        sh 'gsutil cp -r . $BUCKET_URI'
+                        sh 'gsutil -m rsync -x "\\.config/*" -r -d . $BUCKET_URI'
                     }
-
                 }
             }
         }
