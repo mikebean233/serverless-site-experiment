@@ -8,7 +8,9 @@ class Projects extends React.Component {
     }
     render() {
         getProjects()
-            .then(res => this.setState(state => { return {projects : res.data}}))
+            .then(res => this.setState(state => {
+                return {projects : res.data};
+            }))
             .catch(reason => console.error(reason));
 
         return (
