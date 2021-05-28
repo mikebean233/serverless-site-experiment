@@ -5,14 +5,13 @@ class Projects extends React.Component {
     constructor(props) {
         super(props);
         this.state = {projects: []};
-    }
-    render() {
         getProjects()
             .then(res => this.setState(state => {
-                return {projects : res.data};
-           }))
-            .catch(reason => console.error(reason));
-
+                return {projects : res};
+            }))
+            .catch(reason => console.log(reason));
+    }
+    render() {
         return (
             <div className="Projects">
                 <h1>Projects</h1>
